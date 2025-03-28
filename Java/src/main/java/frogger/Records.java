@@ -1,6 +1,7 @@
 package frogger;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Refactor Task 2.
@@ -9,19 +10,17 @@ import java.util.ArrayList;
  */
 
 public class Records {
-    private ArrayList<FroggerID> recordList;
-
-    public Records() {
-        this.recordList = new ArrayList<>();
-    }
+    private final List<FroggerID> records = new ArrayList<>();
 
     public void addRecord(FroggerID froggerID) {
-        if (!recordList.contains(froggerID)) {
-            recordList.add(froggerID);
+        if (!records.contains(froggerID)) {
+            records.add(froggerID);
+        } else {
+            System.out.println("Duplicate record!");
         }
     }
 
-    public boolean hasRecord(FroggerID froggerID) {
-        return recordList.contains(froggerID);
+    public boolean isRegistered(FroggerID froggerID) {
+        return records.contains(froggerID);
     }
 }

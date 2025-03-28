@@ -8,22 +8,24 @@ import frogger.FroggerID;
  * @author Zishen Wen (F22), Deyuan Chen (S22), Duan Liang (F23)
  */
 public class Frogger {
-
-    private FroggerID froggerID;
+    private final FroggerID froggerID;
     private int position;
 
     public Frogger(String firstName, String lastName) {
-        // this.records = new Records();
         this.froggerID = new FroggerID(firstName, lastName);
         this.position = 0;
     }
 
-    public void move(int steps) {
-        this.position += steps;
+    public void move(int steps, Road road) {
+        int newPosition = this.position + steps;
+        if (!road.isOccupied(newPosition)) {
+            this.position = newPosition;
+        } else {
+            System.out.println("Cannot move, road is occupied!");
+        }
     }
 
-    public boolean isOnRoad(Road road) {
-        return road.isOccupied(position);
+    public FroggerID getFroggerID() {
+        return froggerID;
     }
-
 }
